@@ -3,7 +3,11 @@
 This repository contains the implementation of various Model Predictive Control (MPC) strategies for safe motion planning, ranging from deterministic baselines to Distributionally Robust (DR) approaches.
 
 ## Installation
-The MPC algorithms are solved using CasADi optimization tools in Python. The requirement and the other packages can be installed from the [requirement file](requirements.txt). 
+
+### Prerequisites
+This project uses **CasADi** for optimization. To solve the Nonlinear Programming (NLP) problems, the **IPOPT** solver is utilized. For optimal performance, it is recommended to use the **HSL (Harwell Subroutine Library)** linear solvers (such as `ma27` or `ma57`) with IPOPT.
+
+All necessary Python packages are listed in the [requirements.txt](requirements.txt) file provided in the root directory.
 
 ## 1. Deterministic MPC
 A standard MPC implementation that assumes perfect model knowledge and a static, known environment and calculates the control action accordingly, but when applied, disturbances in obstacle positions and system dynamics can occur.
