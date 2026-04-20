@@ -9,7 +9,17 @@ This project uses **CasADi** for optimization. To solve the Nonlinear Programmin
 
 All necessary Python packages are listed in the [requirements.txt](requirements.txt) file provided in the root directory.
 
-## 1. Deterministic MPC
+---
+
+## 1. Wasserstein Tube-based MPC
+A Tube-based MPC formulation that utilizes the Wasserstein metric to construct robust, probability-based safe tubes around a nominal trajectory. This approach is specifically tailored to handle state dynamics uncertainties, guaranteeing constraint satisfaction by bounding the probability distribution of the system's true state against disturbances.
+
+* **Source Code:** [wasserstein_tube_mpc.py](wt_mpc.py)
+* **Resulting Plots:**
+    ![Wasserstein Tube MPC Results](Results/wt_mpc.png)
+
+  
+## 2. Deterministic MPC
 A standard MPC implementation that assumes perfect model knowledge and a static, known environment and calculates the control action accordingly, but when applied, disturbances in obstacle positions and system dynamics can occur.
 
 * **Source Code:** [dmpc.py](dmpc.py)
@@ -18,7 +28,7 @@ A standard MPC implementation that assumes perfect model knowledge and a static,
 
 ---
 
-## 2. Robust MPC
+## 3. Robust MPC
 An MPC formulation designed to handle bounded uncertainties by optimizing for the worst-case scenario within a set of possible disturbances.
 
 * **Source Code:** [rmpc.py](rmpc.py)
@@ -27,7 +37,7 @@ An MPC formulation designed to handle bounded uncertainties by optimizing for th
 
 ---
 
-## 3. DR-MPC without ADF
+## 4. DR-MPC without ADF
 Distributionally Robust MPC (DR-MPC) is implemented without an Affine Disturbance Feedback policy when both uncertainties in obstacle position and state dynamics are present simultaneously. This method optimizes performance across a set of probability distributions to ensure safety under distributional uncertainty.
 
 * **Source Code:** [dr_mpc_no_adf.py](drmpc_comb_no_adf.py)
@@ -38,7 +48,7 @@ Distributionally Robust MPC (DR-MPC) is implemented without an Affine Disturbanc
 
 ---
 
-## 4. DR-MPC with ADF
+## 5. DR-MPC with ADF
 The Distributionally Robust MPC implementation uses an Affine Disturbance Feedback (ADF) when both uncertainties in obstacle position and state dynamics are present simultaneously. It improves feedback and safety in complex environments.
 
 * **Source Code:** [drmpc_adf.py](drmpc_comb_adf.py)
